@@ -2,6 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
+  experimental: {
+    agentUpgrade: "security",
+  },
   cacheComponents: true,
   partialPrefetching: true,
   turbopack: {
@@ -11,6 +14,15 @@ const nextConfig: NextConfig = {
         as: "*.css",
       },
     },
+  },
+  async redirects() {
+    return [
+      {
+        source: "/projects/cerist",
+        destination: "/projects/french-paraphrase-generation",
+        permanent: true,
+      },
+    ];
   },
 };
 
